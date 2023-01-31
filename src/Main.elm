@@ -2,6 +2,7 @@ module Main exposing (Msg(..), main)
 
 import Browser
 import Html exposing (Html)
+import Html.Attributes as Attributes
 import Html.Events as Events
 
 
@@ -17,12 +18,20 @@ init =
 
 view : Model -> Html Msg
 view model =
-    Html.div []
-        [ Html.h1 [] [ Html.text "Vite and Elm starter" ]
-        , Html.div []
-            [ Html.button [ Events.onClick Increment ] [ Html.text "+1" ]
+    Html.div [ Attributes.class "flex flex-col items-center" ]
+        [ Html.h1 [ Attributes.class "text-4xl font-bold text-blue-500" ] [ Html.text "Vite and Elm starter" ]
+        , Html.div [ Attributes.class "flex flex-col items-center" ]
+            [ Html.button
+                [ Events.onClick Increment
+                , Attributes.class "border px-8 hover:bg-slate-200"
+                ]
+                [ Html.text "+1" ]
             , Html.div [] [ Html.text (String.fromInt model.count) ]
-            , Html.button [ Events.onClick Decrement ] [ Html.text "-1" ]
+            , Html.button
+                [ Events.onClick Decrement
+                , Attributes.class "border px-8 hover:bg-slate-200"
+                ]
+                [ Html.text "-1" ]
             ]
         ]
 
